@@ -25,7 +25,7 @@ Name nvarchar(25),
 Email nvarchar(30),
 GenderId int
 )
-
+  
 --- andmete sisestamine tabelisse
 insert into Gender (Id, Gender)
 values (1, 'Female')
