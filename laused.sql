@@ -32,11 +32,11 @@ values (1, 'Female')
 insert into Gender (Id, Gender)
 values (2, 'Male')
 
---- ?
+--- SQL päring lisab foreign key tabelisse Gender
 alter table Person add constraint tblPerson_GenderId_FK
 foreign key (GenderId) references Gender(Id)
 
--- ?
+-- Andmete lisamine tabelisse Person
 insert into Person (Id, Name, Email, GenderId)
 values (1, 'Supermees', 's@s.com', 2)
 insert into Person (Id, Name, Email, GenderId)
@@ -51,6 +51,7 @@ insert into Person (Id, Name, Email, GenderId)
 values (6, 'Antman', 'ant"ant.com', 2)
 insert into Person (Id, Name, Email, GenderId)
 values (7, 'Spiderman', 'spider@spiderman.com', 2)
+
 
 -- vaatame tabeli andmeid
 select * from Person
