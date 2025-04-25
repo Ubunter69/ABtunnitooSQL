@@ -1,10 +1,53 @@
 --loome uue db
 CREATE DATABASE funktsioonidLukk;
 use funktsioonidLukk;
+--Loome uue tabeli, et jargmised funktsioonid töötasid
+create table Employees
+(
+Id int primary key,
+Name nvarchar(50),
+Gender nvarchar(10),
+Salary nvarchar(50),
+DepartmentId int
+)
+
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (1, 'Tom', 'Male', 4000, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (2, 'Pam', 'Female', 3000, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (3, 'John', 'Male', 3500, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (4, 'Sam', 'Male', 4500, 2)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (5, 'Todd', 'Male', 2800, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (6, 'Ben', 'Male', 7000, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (7, 'Sara', 'Female', 4800, 3)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (8, 'Valarie', 'Female', 5500, 1)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (9, 'James', 'Male', 6500, NULL)
+insert into Employees (Id, Name, Gender, Salary, DepartmentId)
+values (10, 'Russell', 'Male', 8800, NULL)
+
+alter table Employees
+add Email nvarchar(20)
+
+update Employees set Email = 'Tom@aaa.com' where Id = 1
+update Employees set Email = 'Pam@bbb.com' where Id = 2
+update Employees set Email = 'John@aaa.com' where Id = 3
+update Employees set Email = 'Sam@bbb.com' where Id = 4
+update Employees set Email = 'Todd@bbb.com' where Id = 5
+update Employees set Email = 'Ben@ccc.com' where Id = 6
+update Employees set Email = 'Sara@ccc.com' where Id = 7
+update Employees set Email = 'Valarie@aaa.com' where Id = 8
+update Employees set Email = 'James@bbb.com' where Id = 9
+update Employees set Email = 'Russel@bbb.com' where Id = 10
+
 -- PATINDEX
 -- sama, mis charIndex, aga dünaamilisem ja saab kasutada wildcardi
-
-
 select Email, PATINDEX('%@aaa.com', Email) as FirstOccurence
 from Employees
 where PATINDEX('%@aaa.com', Email) > 0  --leian k]ik selle domeeni esindajad ja
@@ -15,7 +58,7 @@ select Email, REPLACE(Email, '.com', '.net') as ConvertedEmail
 from Employees
 
 --- soovin asnedada peale esimest märki kolm tähte viie tärniga
-select FirstName, LastName, Email,
+select Name, Gender, Email,
 	stuff(Email, 2, 3, '*****') as StuffedEmail
 from Employees
 
