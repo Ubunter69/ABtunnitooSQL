@@ -123,7 +123,7 @@ sp_depends spGetEmployeeCountByGender
 sp_depends Employees
 
 
---
+--See tagastab töötaja eesnime (Name) vastavalt antud ID-le tabelist Employees
 create proc spGetnameById
 @Id int,
 @Name nvarchar(20) output
